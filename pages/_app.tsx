@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/link-passhref */
 import '../styles/globals.css';
 import '../styles/Post.css';
 import Link from 'next/link';

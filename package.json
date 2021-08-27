@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "gen": "graphql-codegen --config codegen.yml"
   },
   "dependencies": {
     "graphql": "^15.5.1",
@@ -16,8 +17,9 @@
     "urql": "^2.0.4"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^2.1.1",
-    "@graphql-codegen/typescript": "^2.1.2",
+    "@graphql-codegen/cli": "2.1.1",
+    "@graphql-codegen/typescript": "2.1.2",
+    "@graphql-codegen/typescript-operations": "2.1.2",
     "@graphql-codegen/typescript-urql": "^3.1.2",
     "@types/react": "17.0.19",
     "eslint": "7.32.0",
