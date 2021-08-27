@@ -1,21 +1,14 @@
+import { useRouter } from 'next/dist/client/router';
 import React, { useState } from 'react';
-import { useUpdatePostMutation } from '../generated/graphql';
 
 const UpdatePost = () => {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
-  const [, updatePost] = useUpdatePostMutation()
+  const router = useRouter()
+  const postId = router.query.id;
 
   const updatePostClicked = async () => {
-    const {error} = await updatePost({
-      id: 1,
-      title,
-      text
-    })
-
-    if(!error) {
-
-    }
+    
   }
 
   return (
@@ -28,7 +21,7 @@ const UpdatePost = () => {
         <div style={{ fontSize:'1.5rem', fontWeight: 'bold', marginRight: '1rem'}}>Text</div>
         <input style={{ borderRadius: '0.3rem', padding: '0.5rem' }} value={text} onChange={(e) => setText(e.target.value)} />
       </div>
-      <button onClick={updatePostClicked} style={{ padding: '0.3rem', fontSize: '1.5rem', fontWeight: 'bold', cursor: 'pointer' }}>Create Post</button>
+      <button onClick={updatePostClicked} style={{ padding: '0.3rem', fontSize: '1.5rem', fontWeight: 'bold', cursor: 'pointer' }}>Update Post</button>
     </div>
   );
 };

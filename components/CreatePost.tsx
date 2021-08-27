@@ -1,22 +1,11 @@
 import React, { useState } from 'react';
-import { useCreatePostMutation } from '../generated/graphql';
 
 const CreatePost = () => {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
-  const [, createPost] = useCreatePostMutation()
 
   const createPostClicked = async () => {
-    const {error} = await createPost({
-      input: {
-        title,
-        text
-      }
-    })
-
-    if(!error) {
-
-    }
+    
   }
 
   return (
