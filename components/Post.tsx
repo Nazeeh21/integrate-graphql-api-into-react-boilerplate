@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/dist/client/router';
 
 interface PostsProps {
@@ -10,6 +10,13 @@ interface PostsProps {
 
 const Post: React.FC<PostsProps> = ({ id, title, text }) => {
   const router = useRouter();
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const onDeletePost = async () => {
+    setLoading(true);
+
+    setLoading(false);
+  };
 
   return (
     <div className='Post'>
@@ -25,8 +32,12 @@ const Post: React.FC<PostsProps> = ({ id, title, text }) => {
         >
           <img src='./edit.png' alt='Edit' />
         </button>
-        <button onClick={() => {}}>
-          <img src='./trash.png' alt='Delete' />
+        <button disabled={loading} onClick={onDeletePost}>
+          <img
+            style={{ cursor: `${!loading ? 'not-allowed' : 'pointer'}` }}
+            src='./trash.png'
+            alt='Delete'
+          />
         </button>
       </div>
     </div>

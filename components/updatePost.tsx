@@ -6,9 +6,14 @@ const UpdatePost = () => {
   const [title, setTitle] = useState('');
   const [text, setText] = useState('');
   const router = useRouter();
+  const [loading, setLoading] = useState<boolean>(false);
   const postId = router.query.id;
 
-  const updatePostClicked = async () => {};
+  const updatePostClicked = async () => {
+    setLoading(true);
+
+    setLoading(false);
+  };
 
   return (
     <div className={styles.postForm}>
@@ -20,8 +25,8 @@ const UpdatePost = () => {
         <div>Text</div>
         <textarea value={text} onChange={(e) => setText(e.target.value)} />
       </div>
-      <button className={styles.button} onClick={updatePostClicked}>
-        Update Post
+      <button disabled={loading} className={styles.button} onClick={updatePostClicked}>
+      {loading ? 'Loading' : 'Update Post'}
       </button>
     </div>
   );

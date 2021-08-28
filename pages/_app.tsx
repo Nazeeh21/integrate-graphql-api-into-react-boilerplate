@@ -8,18 +8,18 @@ import styles from '../styles/Navbar.module.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Layout>
-      <div className={styles.navbar}>
-        <Link href="/">
-          <h1 className={styles.logo}>Posts</h1>
-        </Link>
+      <Layout>
+        <div className={styles.navbar}>
+          <Link href='/'>
+            <h1 className={styles.logo}>Posts</h1>
+          </Link>
 
-        <Link href="/createPost">
-          <button className={styles.button}>Create Post</button>
-        </Link>
-      </div>
-      <Component {...pageProps} />
-    </Layout>
+          <Link href='/createPost'>
+            <button className={styles.button}>Create Post</button>
+          </Link>
+        </div>
+        <Component {...pageProps} />
+      </Layout>
   );
 }
 export default MyApp;
