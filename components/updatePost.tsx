@@ -1,5 +1,6 @@
 import { useRouter } from 'next/dist/client/router';
 import React, { useState } from 'react';
+import { useUpdatePostMutation } from '../src/generated/graphql';
 import styles from '../styles/UpdatePost.module.css';
 
 const UpdatePost = () => {
@@ -8,11 +9,17 @@ const UpdatePost = () => {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
   const postId = router.query.id;
+  const [, updatePost] = useUpdatePostMutation()
 
   const updatePostClicked = async () => {
     setLoading(true);
-
+    await updatePost({
+      id: +postId!,
+      text,
+      title
+    })
     setLoading(false);
+    router.push('/');
   };
 
   return (
